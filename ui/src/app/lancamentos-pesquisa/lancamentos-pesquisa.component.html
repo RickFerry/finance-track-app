@@ -30,7 +30,7 @@
         [value]="lancamentos"
         [responsive]="true"
         [paginator]="true"
-        [rows]="2"
+        [rows]="4"
       >
         <ng-template pTemplate="header">
           <tr>
@@ -46,16 +46,16 @@
             <td>{{ lancamento.pessoa }}</td>
             <td>{{ lancamento.descricao }}</td>
             <td style="width: 120px; text-align: center">
-              {{ lancamento.dataVencimento }}
+              {{ lancamento.dataVencimento | date: 'dd/MM/y' }}
             </td>
             <td style="width: 120px; text-align: center">
-              {{ lancamento.dataPagamento }}
+              {{ lancamento.dataPagamento | date: 'dd/MM/y' }}
             </td>
             <td style="width: 120px; text-align: right">
-              <span
+                <span
                 [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'"
-                >{{ lancamento.valor }}</span
-              >
+                >{{ lancamento.valor | currency: 'BRL' : 'symbol' : '1.0-2' }}</span
+                >
             </td>
             <td style="width: 120px; text-align: right">
               <a
