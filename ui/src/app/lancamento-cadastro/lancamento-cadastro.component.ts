@@ -10,4 +10,15 @@ export class LancamentoCadastroComponent {
     { label: 'Receita', value: 'RECEITA' },
     { label: 'Despesa', value: 'DESPESA' },
   ];
+
+  categorias: any = [
+    { label: 'Alimentação', value: 1 },
+    { label: 'Transporte', value: 2 },
+  ];
+
+  pessoas: any = [
+    { label: 'João da Silva', value: 1 },
+    { label: 'Sebastião Souza', value: 2 },
+    { label: 'Maria Abadia', value: 3 },
+  ];
 }

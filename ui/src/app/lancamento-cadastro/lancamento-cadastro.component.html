@@ -31,15 +31,32 @@
       </div>
       <div class="p-col-12 p-md-3 p-fluid">
         <label for="valor">Valor</label>
-        <input id="valor" pInputText type="text" placeholder="0,00" />
+        <p-inputNumber
+          mode="decimal"
+          locale="pt-BR"
+          prefix="R$"
+          [minFractionDigits]="2"
+        ></p-inputNumber>
       </div>
       <div class="p-col-12 p-md-6 p-fluid">
         <label for="Categoria">Categoria</label>
-        <input id="Categoria" pInputText type="text" />
+        <p-dropdown
+          [options]="categorias"
+          id="Categoria"
+          [showClear]="true"
+          [filter]="true"
+          placeholder="Selecione"
+        ></p-dropdown>
       </div>
       <div class="p-col-12 p-md-6 p-fluid">
         <label for="pessoa">Pessoa</label>
-        <input id="pessoa" pInputText type="text" />
+        <p-dropdown
+          [options]="pessoas"
+          id="pessoa"
+          [showClear]="true"
+          [filter]="true"
+          placeholder="Selecione"
+        ></p-dropdown>
       </div>
       <div class="p-col-12 p-fluid">
         <label for="observacao">Observação</label>
