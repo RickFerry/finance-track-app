@@ -27,7 +27,26 @@
       </div>
       <div class="p-col-12 p-md-9 p-fluid">
         <label for="descricao">Descrição</label>
-        <input id="descricao" pInputText type="text" />
+        <input
+          id="descricao"
+          pInputText
+          type="text"
+          name="descricao"
+          ngModel
+          #descricao="ngModel"
+          required="true"
+          minlength="10"
+        />
+        <p-message
+          *ngIf="descricao.hasError('required') && descricao.dirty"
+          severity="error"
+          text="Informe uma descrição"
+        ></p-message>
+        <p-message
+          *ngIf="descricao.hasError('minlength') && descricao.dirty"
+          severity="error"
+          text="Minimo de {{ descricao.errors.minlength.requiredLength }} caracteres"
+        ></p-message>
       </div>
       <div class="p-col-12 p-md-3 p-fluid">
         <label for="valor">Valor</label>
