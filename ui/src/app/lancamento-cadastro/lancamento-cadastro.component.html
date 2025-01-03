@@ -1,5 +1,5 @@
 <div class="container">
-  <form>
+  <form #f="ngForm">
     <div class="p-grid">
       <div class="p-col-12">
         <h1>Novo Lançamento</h1>
@@ -13,7 +13,16 @@
           dateFormat="dd/mm/yy"
           id="vencimento"
           [showIcon]="true"
+          name="vencimento"
+          ngModel
+          #vencimento="ngModel"
+          required="true"
         ></p-calendar>
+        <p-message
+          *ngIf="vencimento.hasError('required') && vencimento.dirty"
+          severity="error"
+          text="Informe uma data de vencimento"
+        ></p-message>
       </div>
       <div class="p-col-12 p-md-6 p-fluid">
         <label for="recebimento">{{
@@ -23,7 +32,16 @@
           dateFormat="dd/mm/yy"
           id="vencimento"
           [showIcon]="true"
+          name="vencimento"
+          ngModel
+          #vencimento="ngModel"
+          required="true"
         ></p-calendar>
+        <p-message
+          *ngIf="vencimento.hasError('required') && vencimento.dirty"
+          severity="error"
+          text="Informe uma data de vencimento"
+        ></p-message>
       </div>
       <div class="p-col-12 p-md-9 p-fluid">
         <label for="descricao">Descrição</label>
@@ -45,7 +63,9 @@
         <p-message
           *ngIf="descricao.hasError('minlength') && descricao.dirty"
           severity="error"
-          text="Minimo de {{ descricao.errors.minlength.requiredLength }} caracteres"
+          text="Minimo de {{
+            descricao.errors.minlength.requiredLength
+          }} caracteres"
         ></p-message>
       </div>
       <div class="p-col-12 p-md-3 p-fluid">
@@ -55,7 +75,16 @@
           locale="pt-BR"
           prefix="R$"
           [minFractionDigits]="2"
+          name="valor"
+          ngModel
+          #valor="ngModel"
+          required="true"
         ></p-inputNumber>
+        <p-message
+          *ngIf="valor.hasError('required') && valor.dirty"
+          severity="error"
+          text="Informe um valor"
+        ></p-message>
       </div>
       <div class="p-col-12 p-md-6 p-fluid">
         <label for="Categoria">Categoria</label>
@@ -65,7 +94,16 @@
           [showClear]="true"
           [filter]="true"
           placeholder="Selecione"
+          name="categoria"
+          ngModel
+          #categoria="ngModel"
+          required="true"
         ></p-dropdown>
+        <p-message
+          *ngIf="categoria.hasError('required') && categoria.dirty"
+          severity="error"
+          text="Informe uma categoria"
+        ></p-message>
       </div>
       <div class="p-col-12 p-md-6 p-fluid">
         <label for="pessoa">Pessoa</label>
@@ -75,14 +113,28 @@
           [showClear]="true"
           [filter]="true"
           placeholder="Selecione"
+          name="pessoa"
+          ngModel
+          #pessoa="ngModel"
+          required="true"
         ></p-dropdown>
+        <p-message
+          *ngIf="pessoa.hasError('required') && pessoa.dirty"
+          severity="error"
+          text="Informe uma pessoa"
+        ></p-message>
       </div>
       <div class="p-col-12 p-fluid">
         <label for="observacao">Observação</label>
         <textarea id="observacao" pInputTextarea rows="3"></textarea>
       </div>
       <div class="p-col-12">
-        <button pButton type="submit" label="Salvar"></button>
+        <button
+          pButton
+          type="submit"
+          label="Salvar"
+          [disabled]="f.invalid"
+        ></button>
         <button
           pButton
           type="button"
