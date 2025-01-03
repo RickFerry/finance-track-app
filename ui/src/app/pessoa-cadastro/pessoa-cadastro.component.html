@@ -6,15 +6,60 @@
       </div>
       <div class="p-col-12 p-fluid">
         <label for="nome">Nome</label>
-        <input id="nome" pInputText type="text" />
+        <input
+          id="nome"
+          pInputText
+          type="text"
+          name="nome"
+          ngModel
+          #nome="ngModel"
+          required="true"
+          minlength="10"
+        />
+        <p-message
+          *ngIf="nome.hasError('required') && nome.dirty"
+          severity="error"
+          text="Informe um nome"
+        ></p-message>
+        <p-message
+          *ngIf="nome.hasError('minlength') && nome.dirty"
+          severity="error"
+          text="Minimo de {{ nome.errors.minlength.requiredLength }} caracteres"
+        ></p-message>
       </div>
       <div class="p-col-12 p-md-9 p-fluid">
         <label for="logradouro">Logradouro</label>
-        <input id="logradouro" pInputText type="text" />
+        <input
+          id="logradouro"
+          pInputText
+          type="text"
+          name="logradouro"
+          ngModel
+          #logradouro="ngModel"
+          required="true"
+        />
+        <p-message
+          *ngIf="logradouro.hasError('required') && logradouro.dirty"
+          severity="error"
+          text="Informe um logradouro"
+        ></p-message>
       </div>
       <div class="p-col-12 p-md-3 p-fluid">
         <label for="numero">Numero</label>
-        <input id="numero" pInputText type="text" />
+        <input
+          id="numero"
+          pInputText
+          type="text"
+          name="numero"
+          ngModel
+          #numero="ngModel"
+          required="true"
+        />
+        <p-message
+          *ngIf="numero.hasError('required') && numero.dirty"
+          severity="error"
+          text="Informe um numero"
+        ></p-message>
       </div>
       <div class="p-col-12 p-md-4 p-fluid">
         <label for="complemento">Complemento</label>
@@ -22,19 +67,69 @@
       </div>
       <div class="p-col-12 p-md-4 p-fluid">
         <label for="bairro">Bairro</label>
-        <input id="bairro" pInputText type="text" />
+        <input
+          id="bairro"
+          pInputText
+          type="text"
+          name="bairro"
+          ngModel
+          #bairro="ngModel"
+          required="true"
+        />
+        <p-message
+          *ngIf="bairro.hasError('required') && bairro.dirty"
+          severity="error"
+          text="Informe um bairro"
+        ></p-message>
       </div>
       <div class="p-col-12 p-md-4 p-fluid">
         <label for="cep">CEP</label>
-        <p-inputMask mask="99.999-999"></p-inputMask>
+        <p-inputMask
+          mask="99.999-999"
+          name="cep"
+          ngModel
+          #cep="ngModel"
+          required="true"
+        ></p-inputMask>
+        <p-message
+          *ngIf="cep.hasError('required') && cep.dirty"
+          severity="error"
+          text="Informe um CEP"
+        ></p-message>
       </div>
       <div class="p-col-12 p-md-6 p-fluid">
         <label for="cidade">Cidade</label>
-        <input id="cidade" pInputText type="text" />
+        <input
+          id="cidade"
+          pInputText
+          type="text"
+          name="cidade"
+          ngModel
+          #cidade="ngModel"
+          required="true"
+        />
+        <p-message
+          *ngIf="cidade.hasError('required') && cidade.dirty"
+          severity="error"
+          text="Informe uma cidade"
+        ></p-message>
       </div>
       <div class="p-col-12 p-md-6 p-fluid">
         <label for="estado">Estado</label>
-        <input id="estado" pInputText type="text" />
+        <input
+          id="estado"
+          pInputText
+          type="text"
+          name="estado"
+          ngModel
+          #estado="ngModel"
+          required="true"
+        />
+        <p-message
+          *ngIf="estado.hasError('required') && estado.dirty"
+          severity="error"
+          text="Informe um estado"
+        ></p-message>
       </div>
       <div class="p-col-12">
         <button pButton type="submit" label="Salvar"></button>
