@@ -3,13 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
-import { NavbarComponent } from './navbar/navbar.component';
 import { PessoasModule } from './pessoas/pessoas.module';
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent],
-  imports: [BrowserModule, AppRoutingModule, LancamentosModule, PessoasModule],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    LancamentosModule,
+    PessoasModule,
+    CoreModule,
+  ],
 
   providers: [],
   bootstrap: [AppComponent],
