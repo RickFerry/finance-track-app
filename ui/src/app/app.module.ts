@@ -20,20 +20,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LancamentosModule } from './lancamentos/lancamentos.module';
 import { NavbarComponent } from './navbar/navbar.component';
-import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
-import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
+import { PessoasModule } from './pessoas/pessoas.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    PessoasPesquisaComponent,
-    PessoaCadastroComponent,
-  ],
+  declarations: [AppComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     LancamentosModule,
+    PessoasModule,
     InputTextModule,
     ButtonModule,
     TableModule,
