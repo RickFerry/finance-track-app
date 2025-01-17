@@ -16,9 +16,25 @@
       </div>
       <div class="p-col-12">
         <label for="vencimento" style="display: block">Vencimento</label>
-        <input id="vencimento" pInputText type="text" style="width: 95px" />
+        <p-calendar
+          dateFormat="dd/mm/yy"
+          id="vencimento"
+          [showIcon]="true"
+          [inputStyle]="{width: '95px'}"
+          name="vencimentoInicio"
+          [(ngModel)]="dataVencimentoInicio"
+          required="true"
+        ></p-calendar>
         <label for="ate">até</label>
-        <input id="ate" pInputText type="text" style="width: 95px" />
+        <p-calendar
+          dateFormat="dd/mm/yy"
+          id="vencimento"
+          [showIcon]="true"
+          [inputStyle]="{width: '95px'}"
+          name="vencimentoFim"
+          [(ngModel)]="dataVencimentoFim"
+          required="true"
+        ></p-calendar>
       </div>
       <div class="p-col-12">
         <button
