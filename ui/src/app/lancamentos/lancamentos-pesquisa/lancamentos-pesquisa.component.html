@@ -58,6 +58,7 @@
         [lazy]="true"
         [totalRecords]="totalRegistros"
         (onLazyLoad)="aoMudarPagina($event)"
+        #tabela
       >
         <ng-template pTemplate="header">
           <tr>
@@ -98,6 +99,7 @@
                 icon="pi pi-trash"
                 pTooltip="Excluir"
                 tooltipPosition="top"
+                (onClick)="excluir(lancamento)"
               ></p-button>
             </td>
           </tr>

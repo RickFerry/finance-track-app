@@ -59,4 +59,15 @@ export class LancamentoService {
       }
     }
   }
+
+  async excluir(codigo: number): Promise<void> {
+    const headers = new HttpHeaders({
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzcyMjIxNDUsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0FEQVNUUkFSX0NBVEVHT1JJQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSIsIlJPTEVfUkVNT1ZFUl9QRVNTT0EiLCJST0xFX0NBREFTVFJBUl9MQU5DQU1FTlRPIiwiUk9MRV9QRVNRVUlTQVJfTEFOQ0FNRU5UTyIsIlJPTEVfUkVNT1ZFUl9MQU5DQU1FTlRPIiwiUk9MRV9DQURBU1RSQVJfUEVTU09BIiwiUk9MRV9QRVNRVUlTQVJfQ0FURUdPUklBIiwiUk9MRV9SRU1PVkVSX0NBVEVHT1JJQSJdLCJqdGkiOiI3ZWU3YWE1Yi1hZmI0LTRlMDItYjc4Zi1hNTRlMDVkOTc5MjciLCJjbGllbnRfaWQiOiJhbmd1bGFyIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.NbHkUO9lqka6BtR2GigTvsKLAYUAF3x65lG8uMvp8lY',
+    });
+
+    await this.http
+      .delete(`${this.lancamentoUrl}/${codigo}`, { headers })
+      .toPromise();
+  }
 }
