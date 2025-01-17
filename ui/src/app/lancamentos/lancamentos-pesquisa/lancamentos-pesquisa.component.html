@@ -1,28 +1,36 @@
 <div class="container">
   <div class="p-grid">
-    <div class="p-col-12">
-      <h1>Lançamentos</h1>
-    </div>
-    <div class="p-col-12 p-fluid">
-      <label for="description">Descrição</label>
-      <input id="description" pInputText type="text" />
-    </div>
-    <div class="p-col-12">
-      <label for="vencimento" style="display: block">Vencimento</label>
-      <input id="vencimento" pInputText type="text" style="width: 95px" />
-      <label for="ate">até</label>
-      <input id="ate" pInputText type="text" style="width: 95px" />
-    </div>
-    <div class="p-col-12">
-      <button
-        pButton
-        type="submit"
-        label="Pesquisar"
-        icon="pi pi-search"
-        iconPos="right"
-        [ngStyle]="{ 'margin-top': '10px' }"
-      ></button>
-    </div>
+    <form (ngSubmit)="pesquisar()">
+      <div class="p-col-12">
+        <h1>Lançamentos</h1>
+      </div>
+      <div class="p-col-12 p-fluid">
+        <label for="description">Descrição</label>
+        <input
+          id="descricao"
+          pInputText
+          type="text"
+          name="descricao"
+          [(ngModel)]="descricao"
+        />
+      </div>
+      <div class="p-col-12">
+        <label for="vencimento" style="display: block">Vencimento</label>
+        <input id="vencimento" pInputText type="text" style="width: 95px" />
+        <label for="ate">até</label>
+        <input id="ate" pInputText type="text" style="width: 95px" />
+      </div>
+      <div class="p-col-12">
+        <button
+          pButton
+          type="submit"
+          label="Pesquisar"
+          icon="pi pi-search"
+          iconPos="right"
+          [ngStyle]="{ 'margin-top': '10px' }"
+        ></button>
+      </div>
+    </form>
   </div>
   <div class="p-grid">
     <div class="p-col-12">
@@ -46,16 +54,18 @@
             <td>{{ lancamento.pessoa }}</td>
             <td>{{ lancamento.descricao }}</td>
             <td style="width: 120px; text-align: center">
-              {{ lancamento.dataVencimento | date: 'dd/MM/y' }}
+              {{ lancamento.dataVencimento | date : "dd/MM/y" }}
             </td>
             <td style="width: 120px; text-align: center">
-              {{ lancamento.dataPagamento | date: 'dd/MM/y' }}
+              {{ lancamento.dataPagamento | date : "dd/MM/y" }}
             </td>
             <td style="width: 120px; text-align: right">
-                <span
+              <span
                 [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'"
-                >{{ lancamento.valor | currency: 'BRL' : 'symbol' : '1.0-2' }}</span
-                >
+                >{{
+                  lancamento.valor | currency : "BRL" : "symbol" : "1.0-2"
+                }}</span
+              >
             </td>
             <td style="width: 120px; text-align: right">
               <a
