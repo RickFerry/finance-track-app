@@ -1,22 +1,30 @@
 <div class="container">
   <div class="p-grid">
-    <div class="p-col-12">
-      <h1>Pessoas</h1>
-    </div>
-    <div class="p-col-12 p-fluid">
-      <label for="description">Nome</label>
-      <input id="description" pInputText type="text" />
-    </div>
-    <div class="p-col-12">
-      <button
-        pButton
-        type="submit"
-        label="Pesquisar"
-        icon="pi pi-search"
-        iconPos="right"
-        [ngStyle]="{ 'margin-top': '10px' }"
-      ></button>
-    </div>
+    <form (ngSubmit)="pesquisar()">
+      <div class="p-col-12">
+        <h1>Pessoas</h1>
+      </div>
+      <div class="p-col-12 p-fluid">
+        <label for="nome">Nome</label>
+        <input
+          id="nome"
+          pInputText
+          type="text"
+          name="nome"
+          [(ngModel)]="filtro.nome"
+        />
+      </div>
+      <div class="p-col-12">
+        <button
+          pButton
+          type="submit"
+          label="Pesquisar"
+          icon="pi pi-search"
+          iconPos="right"
+          [ngStyle]="{ 'margin-top': '10px' }"
+        ></button>
+      </div>
+    </form>
   </div>
   <div class="p-grid">
     <div class="p-col-12">
@@ -24,7 +32,10 @@
         [value]="pessoas"
         [responsive]="true"
         [paginator]="true"
-        [rows]="4"
+        [rows]="filtro.itensPorPagina"
+        [lazy]="true"
+        [totalRecords]="totalRegistros"
+        (onLazyLoad)="aoMudarPagina($event)"
       >
         <ng-template pTemplate="header">
           <tr>
@@ -37,9 +48,9 @@
         <ng-template pTemplate="body" let-pessoa>
           <tr>
             <td>{{ pessoa.nome }}</td>
-            <td>{{ pessoa.cidade }}</td>
+            <td>{{ pessoa.endereco.cidade }}</td>
             <td>
-              {{ pessoa.estado }}
+              {{ pessoa.endereco.estado }}
             </td>
             <td>
               <a

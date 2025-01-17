@@ -1,19 +1,29 @@
 import { Component } from '@angular/core';
 
+import { PessoaFiltro, PessoaService } from '../pessoa.service';
+
 @Component({
   selector: 'app-pessoas-pesquisa',
   templateUrl: './pessoas-pesquisa.component.html',
   styleUrls: ['./pessoas-pesquisa.component.css'],
 })
 export class PessoasPesquisaComponent {
-  pessoas = [
-    { nome: 'Fulano', cidade: 'Brasília', estado: 'DF', status: true },
-    { nome: 'Ciclano', cidade: 'Rio de Janeiro', estado: 'RJ', status: false },
-    { nome: 'Beltrano', cidade: 'São Paulo', estado: 'SP', status: true },
-    { nome: 'Zé', cidade: 'Curitiba', estado: 'PR', status: false },
-    { nome: 'Maria', cidade: 'Salvador', estado: 'BA', status: true },
-    { nome: 'João', cidade: 'Porto Alegre', estado: 'RS', status: false },
-    { nome: 'José', cidade: 'Belo Horizonte', estado: 'MG', status: true },
-    { nome: 'Ana', cidade: 'Recife', estado: 'PE', status: false },
-  ];
+  totalRegistros = 0;
+  filtro = new PessoaFiltro();
+  pessoas = [];
+
+  constructor(private service: PessoaService) {}
+
+  pesquisar(pagina = 0): void {
+    this.filtro.pagina = pagina;
+    this.service.pesquisar(this.filtro).then((pess) => {
+      this.totalRegistros = pess.totalElements;
+      this.pessoas = pess.content;
+    });
+  }
+
+  aoMudarPagina($event: any): void {
+    const pagina = $event.first / $event.rows;
+    this.pesquisar(pagina);
+  }
 }
