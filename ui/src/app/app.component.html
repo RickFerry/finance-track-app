@@ -4,4 +4,23 @@
   <app-pessoas-pesquisa></app-pessoas-pesquisa>
   <app-lancamento-cadastro></app-lancamento-cadastro>
   <app-pessoa-cadastro></app-pessoa-cadastro>
--->
+  -->
+<p-toast></p-toast>
+<p-confirmDialog header="Confirmação" icon="pi pi-question-circle" #confirm>
+  <p-footer>
+    <button
+      pButton
+      type="button"
+      label="Sim"
+      icon="pi pi-check"
+      (click)="confirm.accept()"
+    ></button>
+    <button
+      pButton
+      type="button"
+      label="Não"
+      icon="pi pi-times"
+      (click)="confirm.reject()"
+    ></button>
+  </p-footer>
+</p-confirmDialog>
