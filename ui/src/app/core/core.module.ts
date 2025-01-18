@@ -8,6 +8,7 @@ import { LancamentoService } from '../lancamentos/Lancamento.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { ErrorHandlerService } from './error-handler.service';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CategoriaService } from '../categorias/categoria.service';
 
 @NgModule({
   imports: [CommonModule, ToastModule, ConfirmDialogModule],
@@ -17,6 +18,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     ErrorHandlerService,
     LancamentoService,
     PessoaService,
+    CategoriaService,
     MessageService,
     ConfirmationService,
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'pt-BR' },
