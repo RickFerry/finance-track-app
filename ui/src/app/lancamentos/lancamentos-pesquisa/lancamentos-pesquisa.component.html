@@ -23,7 +23,7 @@
           [inputStyle]="{ width: '95px' }"
           name="vencimentoInicio"
           [(ngModel)]="filtro.dataVencimentoInicio"
-          required="true"
+          [required]="true"
         ></p-calendar>
         <label for="ate">até</label>
         <p-calendar
@@ -33,7 +33,7 @@
           [inputStyle]="{ width: '95px' }"
           name="vencimentoFim"
           [(ngModel)]="filtro.dataVencimentoFim"
-          required="true"
+          [required]="true"
         ></p-calendar>
       </div>
       <div class="p-col-12">
