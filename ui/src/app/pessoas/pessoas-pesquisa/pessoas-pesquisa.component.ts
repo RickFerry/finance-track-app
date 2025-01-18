@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { PessoaFiltro, PessoaService } from '../pessoa.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -13,6 +13,7 @@ export class PessoasPesquisaComponent {
   totalRegistros = 0;
   filtro = new PessoaFiltro();
   pessoas = [];
+  @ViewChild('tabela') grid: any;
 
   constructor(
     private service: PessoaService,
@@ -33,13 +34,16 @@ export class PessoasPesquisaComponent {
     this.confirm.confirm({
       message: 'Tem certeza que deseja excluir?',
       accept: () => {
-        this.service.excluir(Pessoa.codigo).then(() => {
-          this.msgService.add({
-            severity: 'success',
-            summary: 'Pessoa excluída com sucesso!',
-          });
-          this.pesquisar();
-        });
+        this.service
+          .excluir(Pessoa.codigo)
+          .then(() => {
+            this.msgService.add({
+              severity: 'success',
+              summary: 'Pessoa excluída com sucesso!',
+            });
+            this.grid.reset();
+          })
+          .catch((error) => this.errorHandler.handler(error));
       },
     });
   }
