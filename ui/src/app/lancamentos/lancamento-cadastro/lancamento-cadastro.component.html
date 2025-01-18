@@ -1,11 +1,11 @@
 <div class="container">
-  <form #f="ngForm">
+  <form #f="ngForm" (ngSubmit)="salvar(f)">
     <div class="p-grid">
       <div class="p-col-12">
         <h1>Novo Lançamento</h1>
       </div>
       <div class="p-col-12">
-        <p-selectButton [options]="tipos" #tipo></p-selectButton>
+        <p-selectButton [options]="tipos" name="tipo" [(ngModel)]="lancamento.tipo" #tipo></p-selectButton>
       </div>
       <div class="p-col-12 p-md-6 p-fluid">
         <label for="vencimento">Vencimento</label>
@@ -17,6 +17,7 @@
           ngModel
           #vencimento="ngModel"
           required="true"
+          [(ngModel)]="lancamento.dataVencimento"
         ></p-calendar>
         <p-message
           *ngIf="vencimento.hasError('required') && vencimento.dirty"
@@ -32,10 +33,11 @@
           dateFormat="dd/mm/yy"
           id="vencimento"
           [showIcon]="true"
-          name="vencimento"
+          name="recebimento"
           ngModel
           #vencimento="ngModel"
           required="true"
+          [(ngModel)]="lancamento.dataPagamento"
         ></p-calendar>
         <p-message
           *ngIf="vencimento.hasError('required') && vencimento.dirty"
@@ -54,6 +56,7 @@
           #descricao="ngModel"
           required="true"
           minlength="10"
+          [(ngModel)]="lancamento.descricao"
         />
         <p-message
           *ngIf="descricao.hasError('required') && descricao.dirty"
@@ -79,6 +82,7 @@
           ngModel
           #valor="ngModel"
           required="true"
+          [(ngModel)]="lancamento.valor"
         ></p-inputNumber>
         <p-message
           *ngIf="valor.hasError('required') && valor.dirty"
@@ -98,6 +102,7 @@
           ngModel
           #categoria="ngModel"
           required="true"
+          [(ngModel)]="lancamento.categoria.codigo"
         ></p-dropdown>
         <p-message
           *ngIf="categoria.hasError('required') && categoria.dirty"
@@ -117,6 +122,7 @@
           ngModel
           #pessoa="ngModel"
           required="true"
+          [(ngModel)]="lancamento.pessoa.codigo"
         ></p-dropdown>
         <p-message
           *ngIf="pessoa.hasError('required') && pessoa.dirty"
@@ -126,7 +132,7 @@
       </div>
       <div class="p-col-12 p-fluid">
         <label for="observacao">Observação</label>
-        <textarea id="observacao" pInputTextarea rows="3"></textarea>
+        <textarea id="observacao" pInputTextarea rows="3" name="observacao" [(ngModel)]="lancamento.observacao"></textarea>
       </div>
       <div class="p-col-12">
         <button
