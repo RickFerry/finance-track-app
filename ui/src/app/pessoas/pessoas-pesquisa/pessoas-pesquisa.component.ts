@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-
-import { PessoaFiltro, PessoaService } from '../pessoa.service';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+
+import { PessoaFiltro, PessoaService } from '../pessoa.service';
 
 @Component({
   selector: 'app-pessoas-pesquisa',
@@ -46,6 +46,23 @@ export class PessoasPesquisaComponent {
           .catch((error) => this.errorHandler.handler(error));
       },
     });
+  }
+
+  mudarStatus(pessoa: any): void {
+    const novoStatus = !pessoa.status;
+
+    this.service
+      .mudarStatus(pessoa.codigo, novoStatus)
+      .then(() => {
+        const acao = novoStatus ? 'ativada' : 'desativada';
+
+        pessoa.status = novoStatus;
+        this.msgService.add({
+          severity: 'success',
+          summary: `Pessoa ${acao} com sucesso!`,
+        });
+      })
+      .catch((error) => this.errorHandler.handler(error));
   }
 
   aoMudarPagina($event: any): void {

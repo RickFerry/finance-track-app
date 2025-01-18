@@ -58,6 +58,7 @@
                 href="#"
                 [pTooltip]="pessoa.status ? 'Desativar' : 'Ativar'"
                 tooltipPosition="top"
+                (click)="mudarStatus(pessoa)"
                 >{{ pessoa.status ? "Ativo" : "Inativo" }}</a
               >
             </td>
