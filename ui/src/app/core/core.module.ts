@@ -1,17 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 
+import { CategoriaService } from '../categorias/categoria.service';
 import { LancamentoService } from '../lancamentos/Lancamento.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { ErrorHandlerService } from './error-handler.service';
 import { NavbarComponent } from './navbar/navbar.component';
-import { CategoriaService } from '../categorias/categoria.service';
 
 @NgModule({
-  imports: [CommonModule, ToastModule, ConfirmDialogModule],
+  imports: [CommonModule, ToastModule, ConfirmDialogModule, RouterModule],
   declarations: [NavbarComponent],
   exports: [NavbarComponent, ToastModule, ConfirmDialogModule],
   providers: [
