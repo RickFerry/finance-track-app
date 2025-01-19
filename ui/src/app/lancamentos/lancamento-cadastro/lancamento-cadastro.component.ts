@@ -6,6 +6,7 @@ import { Lancamento } from 'src/app/core/model';
 import { PessoaService } from 'src/app/pessoas/pessoa.service';
 import { LancamentoService } from '../Lancamento.service';
 import { MessageService } from 'primeng/api';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -26,12 +27,31 @@ export class LancamentoCadastroComponent implements OnInit {
     private pessoaService: PessoaService,
     private lancamentoService: LancamentoService,
     private msg: MessageService,
-    private error: ErrorHandlerService
+    private error: ErrorHandlerService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
+    const codigoLancamento = this.route.snapshot.params['codigo'];
+    if (codigoLancamento) {
+      this.carregarLancamento(codigoLancamento);
+    }
+
     this.carregarCategorias();
     this.carregarPessoas();
+  }
+
+  get editando() {
+    return Boolean(this.lancamento.codigo);
+  }
+
+  carregarLancamento(codigoLancamento: number) {
+    this.lancamentoService
+      .buscarPorCodigo(codigoLancamento)
+      .then((lancamento) => {
+        this.lancamento = lancamento;
+      })
+      .catch((error) => this.error.handler(error));
   }
 
   carregarCategorias() {
@@ -61,6 +81,26 @@ export class LancamentoCadastroComponent implements OnInit {
   }
 
   salvar(form: FormControl) {
+    if (this.editando) {
+      this.atualizarLancamento(form);
+    } else {
+      this.adicionarLancamento(form);
+    }
+  }
+  atualizarLancamento(form: FormControl) {
+    this.lancamentoService
+      .atualizar(this.lancamento)
+      .then((lancamento) => {
+        this.lancamento = lancamento;
+        this.msg.add({
+          severity: 'success',
+          detail: 'Lançamento atualizado com sucesso!',
+        });
+      })
+      .catch((error) => this.error.handler(error));
+  }
+
+  adicionarLancamento(form: FormControl) {
     this.lancamentoService
       .adicionar(this.lancamento)
       .then(() => {

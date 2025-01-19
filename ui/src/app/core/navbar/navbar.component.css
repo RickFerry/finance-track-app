@@ -41,3 +41,7 @@
 .navabr-menuitem a:hover {
   color: #fff;
 }
+
+.navabr-menuitem.ativo {
+  background-color: #494541;
+}
