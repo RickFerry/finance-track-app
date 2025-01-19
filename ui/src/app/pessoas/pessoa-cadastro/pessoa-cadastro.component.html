@@ -1,5 +1,5 @@
 <div class="container">
-  <form #f="ngForm">
+  <form #f="ngForm" (ngSubmit)="salvar(f)">
     <div class="p-grid">
       <div class="p-col-12">
         <h1>Nova Pessoa</h1>
@@ -15,6 +15,7 @@
           #nome="ngModel"
           required="true"
           minlength="10"
+          [(ngModel)]="pessoa.nome"
         />
         <p-message
           *ngIf="nome.hasError('required') && nome.dirty"
@@ -37,6 +38,7 @@
           ngModel
           #logradouro="ngModel"
           required="true"
+          [(ngModel)]="pessoa.endereco.logradouro"
         />
         <p-message
           *ngIf="logradouro.hasError('required') && logradouro.dirty"
@@ -54,6 +56,7 @@
           ngModel
           #numero="ngModel"
           required="true"
+          [(ngModel)]="pessoa.endereco.numero"
         />
         <p-message
           *ngIf="numero.hasError('required') && numero.dirty"
@@ -63,7 +66,13 @@
       </div>
       <div class="p-col-12 p-md-4 p-fluid">
         <label for="complemento">Complemento</label>
-        <input id="complemento" pInputText type="text" />
+        <input
+          id="complemento"
+          pInputText
+          type="text"
+          name="complemento"
+          [(ngModel)]="pessoa.endereco.complemento"
+        />
       </div>
       <div class="p-col-12 p-md-4 p-fluid">
         <label for="bairro">Bairro</label>
@@ -75,6 +84,7 @@
           ngModel
           #bairro="ngModel"
           required="true"
+          [(ngModel)]="pessoa.endereco.bairro"
         />
         <p-message
           *ngIf="bairro.hasError('required') && bairro.dirty"
@@ -90,6 +100,7 @@
           ngModel
           #cep="ngModel"
           required="true"
+          [(ngModel)]="pessoa.endereco.cep"
         ></p-inputMask>
         <p-message
           *ngIf="cep.hasError('required') && cep.dirty"
@@ -107,6 +118,7 @@
           ngModel
           #cidade="ngModel"
           required="true"
+          [(ngModel)]="pessoa.endereco.cidade"
         />
         <p-message
           *ngIf="cidade.hasError('required') && cidade.dirty"
@@ -124,6 +136,7 @@
           ngModel
           #estado="ngModel"
           required="true"
+          [(ngModel)]="pessoa.endereco.estado"
         />
         <p-message
           *ngIf="estado.hasError('required') && estado.dirty"

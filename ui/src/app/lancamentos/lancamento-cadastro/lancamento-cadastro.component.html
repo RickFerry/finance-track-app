@@ -5,7 +5,12 @@
         <h1>Novo Lançamento</h1>
       </div>
       <div class="p-col-12">
-        <p-selectButton [options]="tipos" name="tipo" [(ngModel)]="lancamento.tipo" #tipo></p-selectButton>
+        <p-selectButton
+          [options]="tipos"
+          name="tipo"
+          [(ngModel)]="lancamento.tipo"
+          #tipo
+        ></p-selectButton>
       </div>
       <div class="p-col-12 p-md-6 p-fluid">
         <label for="vencimento">Vencimento</label>
@@ -132,7 +137,13 @@
       </div>
       <div class="p-col-12 p-fluid">
         <label for="observacao">Observação</label>
-        <textarea id="observacao" pInputTextarea rows="3" name="observacao" [(ngModel)]="lancamento.observacao"></textarea>
+        <textarea
+          id="observacao"
+          pInputTextarea
+          rows="3"
+          name="observacao"
+          [(ngModel)]="lancamento.observacao"
+        ></textarea>
       </div>
       <div class="p-col-12">
         <button

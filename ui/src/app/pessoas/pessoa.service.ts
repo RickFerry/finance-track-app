@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Pessoa } from '../core/model';
 
 export class PessoaFiltro {
   nome: string;
@@ -76,5 +77,19 @@ export class PessoaService {
     await this.http
       .patch(`${this.pessoaUrl}/${codigo}/ativo`, ativo, { headers })
       .toPromise();
+  }
+
+  async adicionar(pessoa: Pessoa): Promise<Pessoa> {
+    const headers = new HttpHeaders({
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzczMzk3NjIsInVzZXJfbmFtZSI6ImFkbWluQGVtYWlsLmNvbSIsImF1dGhvcml0aWVzIjpbIlJPTEVfQ0FEQVNUUkFSX0NBVEVHT1JJQSIsIlJPTEVfUEVTUVVJU0FSX1BFU1NPQSIsIlJPTEVfUkVNT1ZFUl9QRVNTT0EiLCJST0xFX0NBREFTVFJBUl9MQU5DQU1FTlRPIiwiUk9MRV9QRVNRVUlTQVJfTEFOQ0FNRU5UTyIsIlJPTEVfUkVNT1ZFUl9MQU5DQU1FTlRPIiwiUk9MRV9DQURBU1RSQVJfUEVTU09BIiwiUk9MRV9QRVNRVUlTQVJfQ0FURUdPUklBIiwiUk9MRV9SRU1PVkVSX0NBVEVHT1JJQSJdLCJqdGkiOiI1MGJkMjUxNy03ZGRjLTRlMjQtYTUyZS02MmM3NDUxYzkwZDIiLCJjbGllbnRfaWQiOiJhbmd1bGFyIiwic2NvcGUiOlsicmVhZCIsIndyaXRlIl19.nFQ1SZfIfASikKddCCzo9hvRkmv6u3kZ-E6EtQs54qk',
+      'Content-Type': 'application/json',
+    });
+
+    const response = await this.http
+      .post<Pessoa>(`${this.pessoaUrl}`, JSON.stringify(pessoa), { headers })
+      .toPromise();
+
+    return response;
   }
 }
