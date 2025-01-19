@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { CategoriaService } from 'src/app/categorias/categoria.service';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Lancamento } from 'src/app/core/model';
 import { PessoaService } from 'src/app/pessoas/pessoa.service';
+
 import { LancamentoService } from '../Lancamento.service';
-import { MessageService } from 'primeng/api';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lancamento-cadastro',
@@ -28,7 +29,8 @@ export class LancamentoCadastroComponent implements OnInit {
     private lancamentoService: LancamentoService,
     private msg: MessageService,
     private error: ErrorHandlerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -103,14 +105,24 @@ export class LancamentoCadastroComponent implements OnInit {
   adicionarLancamento(form: FormControl) {
     this.lancamentoService
       .adicionar(this.lancamento)
-      .then(() => {
+      .then((lanc) => {
         this.msg.add({
           severity: 'success',
           detail: 'Lançamento adicionado com sucesso!',
         });
-        form.reset();
-        this.lancamento = new Lancamento();
+        this.router.navigate(['/lancamentos', lanc.codigo]);
       })
       .catch((error) => this.error.handler(error));
+  }
+
+  novo(form: FormControl) {
+    form.reset();
+    setTimeout(
+      function () {
+        this.lancamento = new Lancamento();
+      }.bind(this),
+      1
+    );
+    this.router.navigate(['/lancamentos/novo']);
   }
 }
