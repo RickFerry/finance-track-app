@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { CategoriaService } from 'src/app/categorias/categoria.service';
@@ -30,7 +31,8 @@ export class LancamentoCadastroComponent implements OnInit {
     private msg: MessageService,
     private error: ErrorHandlerService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private title: Title
   ) {}
 
   ngOnInit() {
@@ -38,7 +40,7 @@ export class LancamentoCadastroComponent implements OnInit {
     if (codigoLancamento) {
       this.carregarLancamento(codigoLancamento);
     }
-
+    this.title.setTitle('Novo Lançamento');
     this.carregarCategorias();
     this.carregarPessoas();
   }
@@ -52,6 +54,7 @@ export class LancamentoCadastroComponent implements OnInit {
       .buscarPorCodigo(codigoLancamento)
       .then((lancamento) => {
         this.lancamento = lancamento;
+        this.atualizarTituloEdicao();
       })
       .catch((error) => this.error.handler(error));
   }
@@ -98,6 +101,7 @@ export class LancamentoCadastroComponent implements OnInit {
           severity: 'success',
           detail: 'Lançamento atualizado com sucesso!',
         });
+        this.atualizarTituloEdicao();
       })
       .catch((error) => this.error.handler(error));
   }
@@ -124,5 +128,9 @@ export class LancamentoCadastroComponent implements OnInit {
       1
     );
     this.router.navigate(['/lancamentos/novo']);
+  }
+
+  atualizarTituloEdicao() {
+    this.title.setTitle(`Edição de lançamento: ${this.lancamento.descricao}`);
   }
 }

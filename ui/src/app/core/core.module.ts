@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
@@ -23,6 +24,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
     CategoriaService,
     MessageService,
     ConfirmationService,
+    Title,
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'pt-BR' },
   ],
 })
