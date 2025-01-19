@@ -10,10 +10,11 @@ import { LancamentoService } from '../lancamentos/Lancamento.service';
 import { PessoaService } from '../pessoas/pessoa.service';
 import { ErrorHandlerService } from './error-handler.service';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 
 @NgModule({
   imports: [CommonModule, ToastModule, ConfirmDialogModule, RouterModule],
-  declarations: [NavbarComponent],
+  declarations: [NavbarComponent, PaginaNaoEncontradaComponent],
   exports: [NavbarComponent, ToastModule, ConfirmDialogModule],
   providers: [
     ErrorHandlerService,

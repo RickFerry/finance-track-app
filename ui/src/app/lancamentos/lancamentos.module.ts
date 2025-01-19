@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
@@ -17,7 +18,6 @@ import { TooltipModule } from 'primeng/tooltip';
 
 import { LancamentoCadastroComponent } from './lancamento-cadastro/lancamento-cadastro.component';
 import { LancamentosPesquisaComponent } from './lancamentos-pesquisa/lancamentos-pesquisa.component';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -39,6 +39,6 @@ import { RouterModule } from '@angular/router';
     MessageModule,
   ],
   declarations: [LancamentoCadastroComponent, LancamentosPesquisaComponent],
-  exports: [LancamentoCadastroComponent, LancamentosPesquisaComponent],
+  exports: [],
 })
 export class LancamentosModule {}

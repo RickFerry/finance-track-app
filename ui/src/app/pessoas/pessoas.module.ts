@@ -29,6 +29,6 @@ import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.co
     MessageModule,
   ],
   declarations: [PessoaCadastroComponent, PessoasPesquisaComponent],
-  exports: [PessoaCadastroComponent, PessoasPesquisaComponent],
+  exports: [],
 })
 export class PessoasModule {}
