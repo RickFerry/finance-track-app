@@ -85,14 +85,14 @@ export class LancamentoCadastroComponent implements OnInit {
       .catch((error) => this.error.handler(error));
   }
 
-  salvar(form: NgForm) {
+  salvar() {
     if (this.editando) {
-      this.atualizarLancamento(form);
+      this.atualizarLancamento();
     } else {
-      this.adicionarLancamento(form);
+      this.adicionarLancamento();
     }
   }
-  atualizarLancamento(form: NgForm) {
+  atualizarLancamento() {
     this.lancamentoService
       .atualizar(this.lancamento)
       .then((lancamento) => {
@@ -106,7 +106,7 @@ export class LancamentoCadastroComponent implements OnInit {
       .catch((error) => this.error.handler(error));
   }
 
-  adicionarLancamento(form: NgForm) {
+  adicionarLancamento() {
     this.lancamentoService
       .adicionar(this.lancamento)
       .then((lanc) => {

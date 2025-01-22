@@ -13,10 +13,12 @@ import { TooltipModule } from 'primeng/tooltip';
 
 import { PessoaCadastroComponent } from './pessoa-cadastro/pessoa-cadastro.component';
 import { PessoasPesquisaComponent } from './pessoas-pesquisa/pessoas-pesquisa.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     InputTextModule,
     ButtonModule,
     TableModule,

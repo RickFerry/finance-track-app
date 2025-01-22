@@ -4,6 +4,7 @@ import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api'
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 
 import { LancamentoFiltro, LancamentoService } from '../Lancamento.service';
+import { Lancamento } from 'src/app/core/model';
 
 @Component({
   selector: 'app-lancamentos-pesquisa',
@@ -39,7 +40,7 @@ export class LancamentosPesquisaComponent implements OnInit {
       .catch((error) => this.errorHandler.handler(error));
   }
 
-  excluir(lancamento: any): void {
+  excluir(lancamento: Lancamento): void {
     this.confirm.confirm({
       message: 'Tem certeza que deseja excluir?',
       accept: () => {
@@ -60,5 +61,9 @@ export class LancamentosPesquisaComponent implements OnInit {
   aoMudarPagina($event: LazyLoadEvent): void {
     const pagina = $event.first / $event.rows;
     this.pesquisar(pagina);
+  }
+
+  trocarTitulo() {
+    this.title.setTitle('Novo Lançamento');
   }
 }

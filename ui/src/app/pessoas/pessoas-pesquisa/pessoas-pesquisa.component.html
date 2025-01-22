@@ -68,6 +68,7 @@
                   icon="pi pi-pencil"
                   pTooltip="Editar"
                   tooltipPosition="top"
+                  [routerLink]="['/pessoas', pessoa.codigo]"
                 ></p-button
               ></a>
               <p-button
@@ -87,6 +88,8 @@
         icon="pi pi-plus"
         iconPos="right"
         [ngStyle]="{ 'margin-top': '10px' }"
+        routerLink="/pessoas/nova"
+        (onClick)="trocarTitulo()"
       >
       </p-button>
     </div>
