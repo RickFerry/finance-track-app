@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
@@ -85,14 +85,14 @@ export class LancamentoCadastroComponent implements OnInit {
       .catch((error) => this.error.handler(error));
   }
 
-  salvar(form: FormControl) {
+  salvar(form: NgForm) {
     if (this.editando) {
       this.atualizarLancamento(form);
     } else {
       this.adicionarLancamento(form);
     }
   }
-  atualizarLancamento(form: FormControl) {
+  atualizarLancamento(form: NgForm) {
     this.lancamentoService
       .atualizar(this.lancamento)
       .then((lancamento) => {
@@ -106,7 +106,7 @@ export class LancamentoCadastroComponent implements OnInit {
       .catch((error) => this.error.handler(error));
   }
 
-  adicionarLancamento(form: FormControl) {
+  adicionarLancamento(form: NgForm) {
     this.lancamentoService
       .adicionar(this.lancamento)
       .then((lanc) => {
@@ -119,7 +119,7 @@ export class LancamentoCadastroComponent implements OnInit {
       .catch((error) => this.error.handler(error));
   }
 
-  novo(form: FormControl) {
+  novo(form: NgForm) {
     form.reset();
     setTimeout(
       function () {

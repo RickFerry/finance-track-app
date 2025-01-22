@@ -21,7 +21,7 @@
           name="vencimento"
           ngModel
           #vencimento="ngModel"
-          required="true"
+          [required]="true"
           [(ngModel)]="lancamento.dataVencimento"
         ></p-calendar>
         <p-message
@@ -41,7 +41,7 @@
           name="recebimento"
           ngModel
           #vencimento="ngModel"
-          required="true"
+          [required]="true"
           [(ngModel)]="lancamento.dataPagamento"
         ></p-calendar>
         <p-message
@@ -86,7 +86,7 @@
           name="valor"
           ngModel
           #valor="ngModel"
-          required="true"
+          [required]="true"
           [(ngModel)]="lancamento.valor"
         ></p-inputNumber>
         <p-message
@@ -106,7 +106,7 @@
           name="categoria"
           ngModel
           #categoria="ngModel"
-          required="true"
+          [required]="true"
           [(ngModel)]="lancamento.categoria.codigo"
         ></p-dropdown>
         <p-message
@@ -126,7 +126,7 @@
           name="pessoa"
           ngModel
           #pessoa="ngModel"
-          required="true"
+          [required]="true"
           [(ngModel)]="lancamento.pessoa.codigo"
         ></p-dropdown>
         <p-message
