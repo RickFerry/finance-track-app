@@ -99,7 +99,7 @@
           name="cep"
           ngModel
           #cep="ngModel"
-          required="true"
+          [required]="true"
           [(ngModel)]="pessoa.endereco.cep"
         ></p-inputMask>
         <p-message
