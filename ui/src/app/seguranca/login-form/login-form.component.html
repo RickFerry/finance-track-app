@@ -35,6 +35,7 @@
           type="submit"
           label="Login"
           [disabled]="!f.valid"
+          (click)="login(usuario.value, senha.value)"
         ></button>
       </div>
     </div>

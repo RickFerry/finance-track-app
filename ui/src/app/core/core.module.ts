@@ -9,6 +9,7 @@ import { ToastModule } from 'primeng/toast';
 import { CategoriaService } from '../categorias/categoria.service';
 import { LancamentoService } from '../lancamentos/Lancamento.service';
 import { PessoaService } from '../pessoas/pessoa.service';
+import { AuthService } from '../seguranca/auth.service';
 import { ErrorHandlerService } from './error-handler.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
@@ -22,6 +23,7 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component'
     LancamentoService,
     PessoaService,
     CategoriaService,
+    AuthService,
     MessageService,
     ConfirmationService,
     Title,
