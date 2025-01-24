@@ -15,7 +15,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
 
 @NgModule({
-  imports: [CommonModule, ToastModule, ConfirmDialogModule, RouterModule],
+  imports: [
+    CommonModule,
+    ToastModule,
+    ConfirmDialogModule,
+    RouterModule,
+  ],
   declarations: [NavbarComponent, PaginaNaoEncontradaComponent],
   exports: [NavbarComponent, ToastModule, ConfirmDialogModule],
   providers: [

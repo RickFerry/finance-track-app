@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,9 +21,18 @@ import { SegurancaModule } from './seguranca/seguranca.module';
     SegurancaModule,
     HttpClientModule,
     AppRoutingModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('token');
+        },
+        allowedDomains: ['localhost:8080'],
+        disallowedRoutes: ['http://localhost:8080/oauth/token'],
+      },
+    }),
   ],
 
-  providers: [],
+  providers: [JwtHelperService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
