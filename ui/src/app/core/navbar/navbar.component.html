@@ -12,7 +12,7 @@
     </div>
   </div>
   <ul class="navbar-menu" [hidden]="!exibindoMenu">
-    <li class="navbar-usuario">{{ auth.jwtPayload?.user_name }}</li>
+    <li class="navbar-usuario">{{ auth.jwtPayload?.nome }}</li>
     <li class="navabr-menuitem" routerLinkActive="ativo">
       <a
         routerLink="/lancamentos"
