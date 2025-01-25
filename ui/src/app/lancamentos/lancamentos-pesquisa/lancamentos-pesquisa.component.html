@@ -94,6 +94,7 @@
                   pTooltip="Editar"
                   tooltipPosition="top"
                   [routerLink]="['/lancamentos', lancamento.codigo]"
+                  [disabled]="!auth.temPermissao('ROLE_CADASTRAR_LANCAMENTO')"
                 ></p-button
               ></a>
               <p-button
@@ -101,6 +102,7 @@
                 pTooltip="Excluir"
                 tooltipPosition="top"
                 (onClick)="excluir(lancamento)"
+                [disabled]="!auth.temPermissao('ROLE_REMOVER_LANCAMENTO')"
               ></p-button>
             </td>
           </tr>

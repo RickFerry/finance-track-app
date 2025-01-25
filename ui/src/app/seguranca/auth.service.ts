@@ -61,6 +61,14 @@ export class AuthService {
     }
   }
 
+  temQualquerPermissao(roles: string[]): boolean {
+    return roles.some((role) => this.temPermissao(role));
+  }
+
+  temPermissao(permissao: string) {
+    return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
+  }
+
   private aramazenarToken(token: string) {
     this.jwtPayload = this.helper.decodeToken(token);
     localStorage.setItem('token', token);
@@ -71,9 +79,5 @@ export class AuthService {
     if (token) {
       this.aramazenarToken(token);
     }
-  }
-
-  temPermissao(permissao: string) {
-    return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
   }
 }

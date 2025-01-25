@@ -6,6 +6,7 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 
+import { AuthGuard } from './auth.guard';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { MoneyHttpInterceptor } from './money-http-interceptor';
 
@@ -33,6 +34,7 @@ import { MoneyHttpInterceptor } from './money-http-interceptor';
       useClass: MoneyHttpInterceptor,
       multi: true,
     },
+    AuthGuard,
   ],
 })
 export class SegurancaModule {}
