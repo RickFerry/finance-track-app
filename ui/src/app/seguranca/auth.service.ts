@@ -22,7 +22,7 @@ export class AuthService {
     const body = `username=${usuario}&password=${senha}&grant_type=password`;
 
     return await this.http
-      .post(this.oauthTokenUrl, body, { headers })
+      .post(this.oauthTokenUrl, body, { headers, withCredentials: true })
       .toPromise()
       .then((response) => {
         this.aramazenarToken(response['access_token']);
@@ -35,6 +35,30 @@ export class AuthService {
         }
         return Promise.reject(response);
       });
+  }
+
+  isAccessTokenInvalido() {
+    const token = localStorage.getItem('token');
+    return !token || this.helper.isTokenExpired(token);
+  }
+
+  async obterNovoAccessToken(): Promise<void> {
+    const headers = new HttpHeaders({
+      Authorization: 'Basic YW5ndWxhcjpAbmd1bEByMA==',
+      'Content-Type': 'application/x-www-form-urlencoded',
+    });
+
+    const body = 'grant_type=refresh_token';
+
+    try {
+      const response = await this.http
+        .post(this.oauthTokenUrl, body, { headers, withCredentials: true })
+        .toPromise();
+      this.aramazenarToken(response['access_token']);
+      return await Promise.resolve(null);
+    } catch (response_1) {
+      return await Promise.resolve(null);
+    }
   }
 
   private aramazenarToken(token: string) {
