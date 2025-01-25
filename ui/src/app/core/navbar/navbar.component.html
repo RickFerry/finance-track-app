@@ -12,12 +12,20 @@
     </div>
   </div>
   <ul class="navbar-menu" [hidden]="!exibindoMenu">
-    <li class="navbar-usuario">Ricardo</li>
+    <li class="navbar-usuario">{{ authService.jwtPayload?.user_name }}</li>
     <li class="navabr-menuitem" routerLinkActive="ativo">
-      <a routerLink="/lancamentos">Lançamentos</a>
+      <a
+        routerLink="/lancamentos"
+        *ngIf="authService.temPermissao('ROLE_PESQUISAR_LANCAMENTO')"
+        >Lançamentos</a
+      >
     </li>
     <li class="navabr-menuitem" routerLinkActive="ativo">
-      <a routerLink="/pessoas">Pessoas</a>
+      <a
+        routerLink="/pessoas"
+        *ngIf="authService.temPermissao('ROLE_PESQUISAR_PESSOA')"
+        >Pessoas</a
+      >
     </li>
     <li class="navabr-menuitem"><a routerLink="#">Logout</a></li>
   </ul>

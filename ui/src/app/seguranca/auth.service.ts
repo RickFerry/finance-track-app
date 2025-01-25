@@ -48,4 +48,8 @@ export class AuthService {
       this.aramazenarToken(token);
     }
   }
+
+  temPermissao(permissao: string) {
+    return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
+  }
 }
