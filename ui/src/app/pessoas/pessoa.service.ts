@@ -53,7 +53,6 @@ export class PessoaService {
   }
 
   async adicionar(pessoa: Pessoa): Promise<Pessoa> {
-    console.log(pessoa);
     return await this.http
       .post<Pessoa>(`${this.pessoaUrl}`, pessoa)
       .toPromise();
