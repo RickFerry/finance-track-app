@@ -24,13 +24,11 @@ export class LancamentoService {
 
     configureRequestParams();
 
-    const response = await this.http
+    return await this.http
       .get<{ content: any }>(`${this.lancamentoUrl}?resumo`, {
         params,
       })
       .toPromise();
-
-    return response;
 
     function configureRequestParams() {
       params = params.set('page', filtro.pagina.toString());
@@ -61,11 +59,9 @@ export class LancamentoService {
   }
 
   async adicionar(lancamento: Lancamento): Promise<Lancamento> {
-    const response = await this.http
-      .post<Lancamento>(this.lancamentoUrl, JSON.stringify(lancamento))
+    return await this.http
+      .post<Lancamento>(`${this.lancamentoUrl}`, lancamento)
       .toPromise();
-
-    return response;
   }
 
   async atualizar(lancamento: Lancamento): Promise<Lancamento> {

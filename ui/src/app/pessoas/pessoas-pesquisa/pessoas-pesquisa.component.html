@@ -55,11 +55,11 @@
             </td>
             <td>
               <a
-                href="#"
-                [pTooltip]="pessoa.status ? 'Desativar' : 'Ativar'"
+                href="javascript:;"
+                [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'"
                 tooltipPosition="top"
                 (click)="mudarStatus(pessoa)"
-                >{{ pessoa.status ? "Ativo" : "Inativo" }}</a
+                >{{ pessoa.ativo ? "Ativo" : "Inativo" }}</a
               >
             </td>
             <td style="width: 120px; text-align: right">

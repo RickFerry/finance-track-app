@@ -21,8 +21,8 @@ import { MoneyHttpInterceptor } from './money-http-interceptor';
         tokenGetter: () => {
           return localStorage.getItem('token');
         },
-        allowedDomains: ['localhost:8080'],
-        disallowedRoutes: ['http://localhost:8080/oauth/token'],
+        whitelistedDomains: ['localhost:8080'],
+        blacklistedRoutes: ['http://localhost:8080/oauth/token'],
       },
     }),
   ],
