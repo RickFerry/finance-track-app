@@ -46,7 +46,9 @@ export class PessoaService {
 
   async mudarStatus(codigo: number, ativo: boolean): Promise<void> {
     await this.http
-      .patch(`${this.pessoaUrl}/${codigo}/ativo`, ativo)
+      .patch(`${this.pessoaUrl}/${codigo}/ativo`, ativo, {
+        headers: { 'Content-Type': 'application/json' },
+      })
       .toPromise();
   }
 
