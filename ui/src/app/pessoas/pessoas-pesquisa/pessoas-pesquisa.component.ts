@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmationService, LazyLoadEvent, MessageService } from 'primeng/api';
 import { ErrorHandlerService } from 'src/app/core/error-handler.service';
+import { Pessoa } from 'src/app/core/model';
 
 import { PessoaFiltro, PessoaService } from '../pessoa.service';
-import { Pessoa } from 'src/app/core/model';
 
 @Component({
   selector: 'app-pessoas-pesquisa',
@@ -42,37 +42,37 @@ export class PessoasPesquisaComponent implements OnInit {
       message: 'Tem certeza que deseja excluir?',
       accept: () => {
         this.service
-        .excluir(Pessoa.codigo)
-        .then(() => {
-          this.msgService.add({
-            severity: 'success',
-            summary: 'Pessoa excluída com sucesso!',
-          });
-          this.grid.reset();
-        })
-        .catch((error) => this.errorHandler.handler(error));
+          .excluir(Pessoa.codigo)
+          .then(() => {
+            this.msgService.add({
+              severity: 'success',
+              summary: 'Pessoa excluída com sucesso!',
+            });
+            this.grid.reset();
+          })
+          .catch((error) => this.errorHandler.handler(error));
       },
     });
   }
 
   mudarStatus(pessoa: Pessoa): void {
-    const novoStatus = !pessoa.status;
+    const novoStatus = !pessoa.ativo;
 
     this.service
-    .mudarStatus(pessoa.codigo, novoStatus)
-    .then(() => {
-      const acao = novoStatus ? 'ativada' : 'desativada';
+      .mudarStatus(pessoa.codigo, novoStatus)
+      .then(() => {
+        const acao = novoStatus ? 'ativada' : 'desativada';
 
-      pessoa.status = novoStatus;
-      this.msgService.add({
-        severity: 'success',
-        summary: `Pessoa ${acao} com sucesso!`,
-      });
-    })
-    .catch((error) => this.errorHandler.handler(error));
+        pessoa.ativo = novoStatus;
+        this.msgService.add({
+          severity: 'success',
+          summary: `Pessoa ${acao} com sucesso!`,
+        });
+      })
+      .catch((error) => this.errorHandler.handler(error));
   }
 
-  aoMudarPagina($event: any): void {
+  aoMudarPagina($event: LazyLoadEvent): void {
     const pagina = $event.first / $event.rows;
     this.pesquisar(pagina);
   }

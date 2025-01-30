@@ -7,7 +7,7 @@ export class Pessoa {
   codigo!: number;
   nome!: string;
   endereco = new Endereco();
-  status = true;
+  ativo = true;
 }
 
 export class Endereco {

@@ -22,11 +22,9 @@ export class PessoaService {
 
     configureRequestParams();
 
-    const response = await this.http
-      .get<{ content: any }>(`${this.pessoaUrl}`)
+    return await this.http
+      .get<{ content: any }>(`${this.pessoaUrl}`, { params })
       .toPromise();
-
-    return response;
 
     function configureRequestParams() {
       params = params.set('page', filtro.pagina.toString());
@@ -46,18 +44,18 @@ export class PessoaService {
     await this.http.delete(`${this.pessoaUrl}/${codigo}`).toPromise();
   }
 
-  async mudarStatus(codigo: any, ativo: boolean): Promise<void> {
+  async mudarStatus(codigo: number, ativo: boolean): Promise<void> {
     await this.http
-      .patch(`${this.pessoaUrl}/${codigo}/ativo`, ativo)
+      .patch(`${this.pessoaUrl}/${codigo}/ativo`, ativo, {
+        headers: { 'Content-Type': 'application/json' },
+      })
       .toPromise();
   }
 
   async adicionar(pessoa: Pessoa): Promise<Pessoa> {
-    const response = await this.http
-      .post<Pessoa>(`${this.pessoaUrl}`, JSON.stringify(pessoa))
+    return await this.http
+      .post<Pessoa>(`${this.pessoaUrl}`, pessoa)
       .toPromise();
-
-    return response;
   }
 
   async buscarPorCodigo(codigo: number): Promise<Pessoa> {
@@ -68,7 +66,7 @@ export class PessoaService {
 
   async atualizar(pessoa: Pessoa): Promise<Pessoa> {
     return await this.http
-      .put<Pessoa>(`${this.pessoaUrl}/${pessoa.codigo}`, JSON.stringify(pessoa))
+      .put<Pessoa>(`${this.pessoaUrl}/${pessoa.codigo}`, pessoa)
       .toPromise();
   }
 }
