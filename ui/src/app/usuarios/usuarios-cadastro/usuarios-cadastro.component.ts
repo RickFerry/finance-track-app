@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Usuario } from 'src/app/core/model';
+import { permissao, Usuario } from 'src/app/core/model';
+
+import { UsuariosService } from '../usuarios.service';
 
 @Component({
   selector: 'app-usuarios-cadastro',
@@ -10,15 +11,24 @@ import { Usuario } from 'src/app/core/model';
 export class UsuariosCadastroComponent implements OnInit {
   usuario = new Usuario();
 
-  constructor() {}
+  permissoes: permissao[] = [];
 
-  ngOnInit() {}
+  constructor(private usuarioService: UsuariosService) {}
 
-  novo(_t56: NgForm) {
-    throw new Error('Method not implemented.');
+  ngOnInit() {
+    this.carregarPermissoes();
+  }
+
+  carregarPermissoes() {
+    this.usuarioService.listarPermissoes().then((data) => {
+      this.permissoes = data.content.map((p: any) => ({
+        name: p.descricao,
+        code: p.codigo,
+      }));
+    });
   }
 
   salvar() {
-    throw new Error('Method not implemented.');
+    console.log(this.usuario);
   }
 }

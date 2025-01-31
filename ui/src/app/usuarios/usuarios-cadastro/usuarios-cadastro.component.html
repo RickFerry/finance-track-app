@@ -65,20 +65,22 @@
           text="Informe um senha"
         ></p-message>
       </div>
+      <div class="p-col-12 p-md-3">
+        <p-multiSelect
+          [options]="permissoes"
+          [(ngModel)]="usuario.permissoes"
+          name="permissoes"
+          optionLabel="name"
+          placeholder="Escolha suas permissões"
+        ></p-multiSelect>
+      </div>
       <div class="p-col-12">
-        <button
-          pButton
-          type="submit"
-          label="Salvar"
-          [disabled]="f.invalid"
-          title="Salvar"
-        ></button>
+        <button pButton type="submit" label="Salvar" title="Salvar"></button>
         <button
           pButton
           type="button"
           label="Novo"
           class="p-button-info"
-          (click)="novo(f)"
           title="Novo"
         ></button>
         <a routerLink="/pessoas">Voltar para pesquisa</a>

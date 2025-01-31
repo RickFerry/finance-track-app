@@ -7,6 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { MessageModule } from 'primeng/message';
 import { MessagesModule } from 'primeng/messages';
 import { UsuariosCadastroComponent } from './usuarios-cadastro/usuarios-cadastro.component';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { UsuariosCadastroComponent } from './usuarios-cadastro/usuarios-cadastro
     ButtonModule,
     MessageModule,
     MessagesModule,
+    MultiSelectModule,
   ],
   declarations: [UsuariosCadastroComponent],
 })

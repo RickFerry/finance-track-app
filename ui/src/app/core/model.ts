@@ -18,6 +18,11 @@ export class Pessoa {
   ativo = true;
 }
 
+export class permissao {
+  codigo!: number;
+  descricao!: string;
+}
+
 export class Endereco {
   logradouro!: string;
   numero!: string;
