@@ -8,7 +8,7 @@ export class Usuario {
   nome!: string;
   email!: string;
   senha!: string;
-  permissoes!: string[];
+  permissoes: Permissao[] = [];
 }
 
 export class Pessoa {
@@ -18,7 +18,7 @@ export class Pessoa {
   ativo = true;
 }
 
-export class permissao {
+export class Permissao {
   codigo!: number;
   descricao!: string;
 }
