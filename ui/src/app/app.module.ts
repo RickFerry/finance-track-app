@@ -21,7 +21,6 @@ import { SegurancaModule } from './seguranca/seguranca.module';
     HttpClientModule,
     AppRoutingModule,
   ],
-
   providers: [],
   bootstrap: [AppComponent],
 })

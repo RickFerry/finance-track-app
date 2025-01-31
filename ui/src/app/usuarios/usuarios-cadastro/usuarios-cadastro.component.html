@@ -1,0 +1,88 @@
+<div class="container">
+  <form #f="ngForm" (ngSubmit)="salvar()">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <h1>Cadastro de Usuário</h1>
+      </div>
+      <div class="p-col-12 p-fluid">
+        <label for="nome">Nome</label>
+        <input
+          id="nome"
+          pInputText
+          type="text"
+          name="nome"
+          ngModel
+          #nome="ngModel"
+          required="true"
+          minlength="10"
+          [(ngModel)]="usuario.nome"
+        />
+        <p-message
+          *ngIf="nome.hasError('required') && nome.dirty"
+          severity="error"
+          text="Informe um nome"
+        ></p-message>
+        <p-message
+          *ngIf="nome.hasError('minlength') && nome.dirty"
+          severity="error"
+          text="Minimo de {{ nome.errors.minlength.requiredLength }} caracteres"
+        ></p-message>
+      </div>
+      <div class="p-col-12 p-md-9 p-fluid">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          pInputText
+          type="email"
+          name="email"
+          ngModel
+          #email="ngModel"
+          required="true"
+          [(ngModel)]="usuario.email"
+        />
+        <p-message
+          *ngIf="email.hasError('required') && email.dirty"
+          severity="error"
+          text="Informe um email"
+        ></p-message>
+      </div>
+      <div class="p-col-12 p-md-3 p-fluid">
+        <label for="numero">Senha</label>
+        <input
+          id="senha"
+          pInputText
+          type="password"
+          name="senha"
+          ngModel
+          #senha="ngModel"
+          required="true"
+          [(ngModel)]="usuario.senha"
+          title="Senha"
+        />
+        <p-message
+          *ngIf="senha.hasError('required') && senha.dirty"
+          severity="error"
+          text="Informe um senha"
+        ></p-message>
+      </div>
+      <div class="p-col-12">
+        <button
+          pButton
+          type="submit"
+          label="Salvar"
+          [disabled]="f.invalid"
+          title="Salvar"
+        ></button>
+        <button
+          pButton
+          type="button"
+          label="Novo"
+          class="p-button-info"
+          (click)="novo(f)"
+          title="Novo"
+        ></button>
+        <a routerLink="/pessoas">Voltar para pesquisa</a>
+      </div>
+    </div>
+  </form>
+</div>

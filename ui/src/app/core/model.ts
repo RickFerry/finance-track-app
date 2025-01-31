@@ -3,6 +3,14 @@ export class Categoria {
   nome!: string;
 }
 
+export class Usuario {
+  codigo!: number;
+  nome!: string;
+  email!: string;
+  senha!: string;
+  permissoes!: string[];
+}
+
 export class Pessoa {
   codigo!: number;
   nome!: string;
