@@ -29,11 +29,7 @@
       >
     </li>
     <li class="navabr-menuitem">
-      <a
-        routerLink="/sign-up"
-        *ngIf="auth.temPermissao('ROLE_CADASTRAR_PESSOA')"
-        >Cadastrar</a
-      >
+      <a routerLink="/sign-up">Cadastrar</a>
     </li>
     <li class="navabr-menuitem">
       <a routerLink="#" (click)="logout()">Sair</a>

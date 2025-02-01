@@ -55,15 +55,4 @@ export class UsuariosCadastroComponent implements OnInit {
       })
       .catch((error) => this.error.handler(error));
   }
-
-  novo(form: NgForm) {
-    form.reset();
-    setTimeout(
-      function () {
-        this.usuario = new Usuario();
-      }.bind(this),
-      1
-    );
-    this.router.navigate(['/lancamentos']);
-  }
 }
