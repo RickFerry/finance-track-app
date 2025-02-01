@@ -75,15 +75,13 @@
         ></p-multiSelect>
       </div>
       <div class="p-col-12">
-        <button pButton type="submit" label="Salvar" title="Salvar"></button>
         <button
           pButton
-          type="button"
-          label="Novo"
-          class="p-button-info"
-          title="Novo"
+          type="submit"
+          label="Salvar"
+          title="Salvar"
+          (click)="novo(f)"
         ></button>
-        <a routerLink="/pessoas">Voltar para pesquisa</a>
       </div>
     </div>
   </form>

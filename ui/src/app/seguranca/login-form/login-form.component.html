@@ -4,7 +4,6 @@
       <div class="p-col-12">
         <h1>Login</h1>
       </div>
-
       <div class="p-col-12">
         <input
           pInputText
@@ -16,7 +15,6 @@
           #usuario
         />
       </div>
-
       <div class="p-col-12">
         <input
           pInputText
@@ -28,7 +26,6 @@
           #senha
         />
       </div>
-
       <div class="p-col-12">
         <button
           pButton
@@ -36,6 +33,7 @@
           label="Login"
           [disabled]="!f.valid"
           (click)="login(usuario.value, senha.value); senha.value = ''"
+          title="Login"
         ></button>
       </div>
     </div>

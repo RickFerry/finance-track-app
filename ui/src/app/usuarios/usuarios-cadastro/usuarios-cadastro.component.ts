@@ -4,6 +4,9 @@ import { ErrorHandlerService } from 'src/app/core/error-handler.service';
 import { Permissao, Usuario } from 'src/app/core/model';
 
 import { UsuariosService } from '../usuarios.service';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-usuarios-cadastro',
@@ -18,7 +21,9 @@ export class UsuariosCadastroComponent implements OnInit {
   constructor(
     private usuarioService: UsuariosService,
     private msg: MessageService,
-    private error: ErrorHandlerService
+    private error: ErrorHandlerService,
+    private router: Router,
+    private title: Title
   ) {}
 
   ngOnInit() {
@@ -49,5 +54,16 @@ export class UsuariosCadastroComponent implements OnInit {
         this.usuario = new Usuario();
       })
       .catch((error) => this.error.handler(error));
+  }
+
+  novo(form: NgForm) {
+    form.reset();
+    setTimeout(
+      function () {
+        this.usuario = new Usuario();
+      }.bind(this),
+      1
+    );
+    this.router.navigate(['/lancamentos']);
   }
 }

@@ -49,11 +49,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { roles: ['ROLE_CADASTRAR_PESSOA'] },
   },
-  {
-    path: 'sign-up', component: UsuariosCadastroComponent,
-    canActivate: [AuthGuard],
-    data: { roles: ['ROLE_CADASTRAR_PESSOA', 'ROLE_CADASTRAR_LANCAMENTO'] },
-  },
+  { path: 'sign-up', component: UsuariosCadastroComponent },
   { path: 'nao-autorizado', component: NaoAutorizadoComponent },
   { path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent },
   { path: 'login', component: LoginFormComponent },

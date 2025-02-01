@@ -9,6 +9,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { AuthGuard } from './auth.guard';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { MoneyHttpInterceptor } from './money-http-interceptor';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { MoneyHttpInterceptor } from './money-http-interceptor';
     FormsModule,
     InputTextModule,
     ButtonModule,
+    RouterModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: () => {

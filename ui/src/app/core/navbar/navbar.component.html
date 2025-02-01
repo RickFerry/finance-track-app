@@ -6,6 +6,7 @@
           href="javascript:;"
           class="navbar-toggle"
           (click)="exibindoMenu = !exibindoMenu"
+          title="Menu"
           ><i class="pi pi-bars"></i
         ></a>
       </div>
@@ -28,7 +29,14 @@
       >
     </li>
     <li class="navabr-menuitem">
-      <a routerLink="#" (click)="logout()">Logout</a>
+      <a
+        routerLink="/sign-up"
+        *ngIf="auth.temPermissao('ROLE_CADASTRAR_PESSOA')"
+        >Cadastrar</a
+      >
+    </li>
+    <li class="navabr-menuitem">
+      <a routerLink="#" (click)="logout()">Sair</a>
     </li>
   </ul>
 </nav>
